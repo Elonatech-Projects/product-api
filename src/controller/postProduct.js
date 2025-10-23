@@ -36,6 +36,7 @@ const createProduct = async (req, res, next) => {
     }
 
     const parsedComputerProperty = computerProperty ? JSON.parse(computerProperty) : {};
+    console.log('parsed', parsedComputerProperty);
 
     const data = {
       name,
@@ -51,6 +52,8 @@ const createProduct = async (req, res, next) => {
     };
 
     const product = await Product.create(data);
+    console.log('product', product);
+
     res.status(201).json({ success: true, product });
   } catch (error) {
     console.error("Error creating product:", error);
